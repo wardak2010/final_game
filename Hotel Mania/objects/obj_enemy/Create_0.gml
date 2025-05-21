@@ -1,4 +1,9 @@
-hit_count = 0; // Set the initial value to 0
+enemy_health = 4; // Initialize health in Create Event
+
+
+
+
+
 
 
 

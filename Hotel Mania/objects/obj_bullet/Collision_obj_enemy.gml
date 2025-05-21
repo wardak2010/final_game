@@ -1,11 +1,13 @@
-if (other.object_index == obj_enemy) { // Ensure it's affecting enemies
-    other.hit_count += 1; // Increase enemy hit count
+if (instance_exists(other)) { 
+    other.enemy_health -= 1; // Reduce enemy health
+    show_debug_message("Enemy health after hit: " + string(other.enemy_health)); // Debugging
 
-    if (other.hit_count >= 4) { // Destroy only after 4 hits
-        other.instance_destroy();
+    if (other.enemy_health <= 0) {
+        other.instance_destroy(); // Destroy enemy only if health reaches zero
     }
+   
+   instance_destroy(); // Bullet disappears after impact
 }
 
-instance_destroy(); // Destroy bullet after impact
-
+show_debug_message("Bullet collided with enemy and is destroyed.");
 
