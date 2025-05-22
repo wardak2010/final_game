@@ -1,6 +1,5 @@
-speed = 10; // Adjust speed as needed
-direction = 0; // Set direction later based on shooter
-
-hit = false;
 
 
+// Set bullet movement in the correct direction
+direction = image_angle;
+speed = 10;
