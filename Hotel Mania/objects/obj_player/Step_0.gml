@@ -29,7 +29,10 @@ if (mouse_check_button_pressed(mb_left) && instance_exists(gun)) {
     // Fire toward the mouse from the gun's position
     bullet.direction = gun.image_angle;
     bullet.speed = 10;
+	// Play shooting sound
+    audio_play_sound(Gunshot_Sound_Effect__Loud_and_Short_, 1, false);
 }
+
 
 
 
