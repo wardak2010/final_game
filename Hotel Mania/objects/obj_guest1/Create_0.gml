@@ -1,28 +1,30 @@
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
-/// @DnDHash : 2B898515
-/// @DnDArgument : "code" "myMap = ds_map_create();  // This makes a new, empty map.$(13_10)myMap[? "event_type"] = "spawn";  // This sets the key "event_type" to the value "spawn".$(13_10)$(13_10)// Create a data structure to store guest personality traits$(13_10)$(13_10)personality = ds_map_create(); // ✅ Creates the map properly$(13_10)ds_map_add(personality, "mood", choose("Happy", "Neutral", "Angry")); // ✅ Adds a key-value pair$(13_10)personality[? "preference"] = choose("Luxury", "Budget", "Foodie");$(13_10)personality[? "satisfaction"] = 100;$(13_10)$(13_10)// Create Event of obj_guest$(13_10)font_ui = fnt_default; // Assign the font to a variable$(13_10)$(13_10)$(13_10)$(13_10)"
-myMap = ds_map_create();  // This makes a new, empty map.
-myMap[? "event_type"] = "spawn";  // This sets the key "event_type" to the value "spawn".
+/// @DnDHash : 3851BA6D
+/// @DnDArgument : "code" "reviewText = "";  // Initialize reviewText as an empty string$(13_10)$(13_10)// Create a data structure to store guest personality traits$(13_10)personality = ds_map_create();$(13_10)ds_map_add(personality, "mood", choose("Happy", "Neutral", "Angry"));     // Random mood$(13_10)ds_map_add(personality, "preference", choose("Luxury", "Budget", "Foodie")); // Random preference$(13_10)ds_map_add(personality, "satisfaction", 100);                              // Starting satisfaction$(13_10)$(13_10)// You can also set a default font if used later (optional)$(13_10)font_ui = fnt_default;$(13_10)$(13_10)// Initialize myMap for the spawn mechanic$(13_10)myMap = ds_map_create();$(13_10)myMap[? "event_type"] = "spawn";$(13_10)"
+reviewText = "";  // Initialize reviewText as an empty string
 
 // Create a data structure to store guest personality traits
+personality = ds_map_create();
+ds_map_add(personality, "mood", choose("Happy", "Neutral", "Angry"));     // Random mood
+ds_map_add(personality, "preference", choose("Luxury", "Budget", "Foodie")); // Random preference
+ds_map_add(personality, "satisfaction", 100);                              // Starting satisfaction
 
-personality = ds_map_create(); // ✅ Creates the map properly
-ds_map_add(personality, "mood", choose("Happy", "Neutral", "Angry")); // ✅ Adds a key-value pair
-personality[? "preference"] = choose("Luxury", "Budget", "Foodie");
-personality[? "satisfaction"] = 100;
+// You can also set a default font if used later (optional)
+font_ui = fnt_default;
 
-// Create Event of obj_guest
-font_ui = fnt_default; // Assign the font to a variable
+// Initialize myMap for the spawn mechanic
+myMap = ds_map_create();
+myMap[? "event_type"] = "spawn";
 
 /// @DnDAction : YoYo Games.Movement.Set_Direction_Random
 /// @DnDVersion : 1.1
-/// @DnDHash : 07942B2D
+/// @DnDHash : 7C7687C3
 /// @DnDArgument : "direction" "180,0"
 direction = choose(180,0);
 
 /// @DnDAction : YoYo Games.Movement.Set_Speed
 /// @DnDVersion : 1
-/// @DnDHash : 2B13B7C7
+/// @DnDHash : 4ADAA291
 /// @DnDArgument : "speed" "3"
 speed = 3;

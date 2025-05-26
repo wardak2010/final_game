@@ -1,32 +1,37 @@
-// Collision Event (obj_guest collides with obj_checkout)
+// Collision Event (obj_guest1 collides with obj_checkout)
 
-// If by any chance the global variables are not set, initialize them here as a fallback:
+// Ensure global review storage variables are initialized
 if (!variable_global_exists("review_count")) {
     global.reviews = [];
     global.review_count = 0;
 }
 
 var review = "";
-var guestMood = personality[? "mood"];  // Assumes your guest's personality map was created earlier
+var guestMood = personality[? "mood"];  // Correct map lookup using the ? accessor
 
+// Determine the review text based on the guest's mood
 if (guestMood == "Happy") {
     review = "Loved it! Will return!";
 } else if (guestMood == "Neutral") {
     review = "It was fine. Nothing special.";
-} else { // For any other mood, e.g., "Angry"
+} else {  // For any other mood, e.g., "Angry"
     review = "Terrible service! Never coming back!";
 }
 
-// Save the review into the global array and increment the count
+// Record the review globally (if needed)
 global.reviews[global.review_count] = review;
 global.review_count += 1;
 
-// Output a debug message (optional)
-show_debug_message("Checkout review: " + review);
+// Create an instance of obj_review_box relative to the guest's position.
+// For example, 50 pixels above and centered on the guest.
+var boxX = x - 50;  // Adjust offset as necessary
+var boxY = y - 50;
+var reviewBoxInst = instance_create_layer(boxX, boxY, "Instances", obj_review_box);
+reviewBoxInst.reviewText = review; // Pass the review text
 
-// Destroy the guest, since it is now checking out
-instance_destroy();
+// Freeze the guest's movement
+speed = 0;
+depth = -100;  // Bring the guest to the front
 
-
-
-
+// Set Alarm[1] to destroy the guest after 5 seconds (300 steps)
+alarm[1] = 300;
