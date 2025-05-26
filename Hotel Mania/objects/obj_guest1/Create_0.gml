@@ -1,30 +1,15 @@
-/// @DnDAction : YoYo Games.Common.Execute_Code
-/// @DnDVersion : 1
-/// @DnDHash : 3851BA6D
-/// @DnDArgument : "code" "reviewText = "";  // Initialize reviewText as an empty string$(13_10)$(13_10)// Create a data structure to store guest personality traits$(13_10)personality = ds_map_create();$(13_10)ds_map_add(personality, "mood", choose("Happy", "Neutral", "Angry"));     // Random mood$(13_10)ds_map_add(personality, "preference", choose("Luxury", "Budget", "Foodie")); // Random preference$(13_10)ds_map_add(personality, "satisfaction", 100);                              // Starting satisfaction$(13_10)$(13_10)// You can also set a default font if used later (optional)$(13_10)font_ui = fnt_default;$(13_10)$(13_10)// Initialize myMap for the spawn mechanic$(13_10)myMap = ds_map_create();$(13_10)myMap[? "event_type"] = "spawn";$(13_10)"
-reviewText = "";  // Initialize reviewText as an empty string
+// Create Event for obj_guest1
 
-// Create a data structure to store guest personality traits
+// Always create the personality map. (No conditional check needed.)
 personality = ds_map_create();
-ds_map_add(personality, "mood", choose("Happy", "Neutral", "Angry"));     // Random mood
-ds_map_add(personality, "preference", choose("Luxury", "Budget", "Foodie")); // Random preference
-ds_map_add(personality, "satisfaction", 100);                              // Starting satisfaction
+personality[?"mood"]         = "Happy";
+personality[?"satisfaction"] = 100;
 
-// You can also set a default font if used later (optional)
-font_ui = fnt_default;
-
-// Initialize myMap for the spawn mechanic
+// Create myMap if you use it.
 myMap = ds_map_create();
-myMap[? "event_type"] = "spawn";
+myMap[?"event_type"] = "none";
 
-/// @DnDAction : YoYo Games.Movement.Set_Direction_Random
-/// @DnDVersion : 1.1
-/// @DnDHash : 7C7687C3
-/// @DnDArgument : "direction" "180,0"
-direction = choose(180,0);
+// (For an alternative timer approach, we initialize destroyTimer.)
+destroyTimer = -1;
+move_speed=2
 
-/// @DnDAction : YoYo Games.Movement.Set_Speed
-/// @DnDVersion : 1
-/// @DnDHash : 4ADAA291
-/// @DnDArgument : "speed" "3"
-speed = 3;

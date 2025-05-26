@@ -10,6 +10,7 @@
     {"id":{"name":"spr_review_board","path":"sprites/spr_review_board/spr_review_board.yy",},"order":6,},
     {"id":{"name":"obj_guest1","path":"objects/obj_guest1/obj_guest1.yy",},"order":4,},
     {"id":{"name":"spr_mood_neutral","path":"sprites/spr_mood_neutral/spr_mood_neutral.yy",},"order":8,},
+    {"id":{"name":"fnt_2","path":"fonts/fnt_2/fnt_2.yy",},"order":1,},
     {"id":{"name":"fnt_default","path":"fonts/fnt_default/fnt_default.yy",},"order":0,},
     {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},"order":1,},
     {"id":{"name":"spr_guest1","path":"sprites/spr_guest1/spr_guest1.yy",},"order":4,},
