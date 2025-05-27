@@ -18,32 +18,16 @@ if (personality[?"satisfaction"] < 40) {
 if (myMap[?"event_type"] == "spawn") {
     show_debug_message("The event type is spawn.");
 }
-// Only move if not colliding with obj_checkout
-if (!place_meeting(x, y, obj_checkout)) {
 
-    // Find the nearest instance of obj_checkout
-    var targetInst = instance_nearest(x, y, obj_checkout);
-    
-    // If a target exists, move toward it.
-    if (targetInst != noone) {
-        // Calculate the angle from this guest toward the target
-        var targetAngle = point_direction(x, y, targetInst.x, targetInst.y);
-        
-        // Define move speed (change the value as needed)
-        var moveSpeed = 3;
-        
-        // Update position using the correct built-in functions.
-        // (Make sure it's "lengthdir_x" and "lengthdir_y" with the correct spelling.)
-        x += lengthdir_x(moveSpeed, targetAngle);
-        y += lengthdir_y(moveSpeed, targetAngle);
-    }
+// --- Step Event in obj_guest1 (Optional for debugging) ---
+// This will log the current alarm[1] value each step.
+if (alarm[1] != -1) {
+    show_debug_message("Guest " + string(id) + " alarm[1] value: " + string(alarm[1]));
 }
 
-// --- Alternative Timer Method (Commented Out)
-// if (destroyTimer >= 0) {
-//     destroyTimer -= 1;
-//     if (destroyTimer <= 0) {
-//         show_debug_message("[STEP] Timer expired for guest id " + string(id) + ". Destroying guest.");
-//         instance_destroy();
-//     }
-// }
+if guest_mood == "happy" {
+    happy_guests += 1;
+} else if guest_mood == "angry" {
+    happy_guests -= 1;
+}
+happy_guests = clamp(happy_guests, 0, max_guests); // Ensure it stays within bounds

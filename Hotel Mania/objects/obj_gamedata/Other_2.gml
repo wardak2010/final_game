@@ -2,6 +2,7 @@
 global.reviews = [];
 global.review_count = 0;
 
+show_debug_message("Current room_speed: " + string(room_speed));
 
 
 
