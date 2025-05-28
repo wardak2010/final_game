@@ -25,9 +25,3 @@ if (alarm[1] != -1) {
     show_debug_message("Guest " + string(id) + " alarm[1] value: " + string(alarm[1]));
 }
 
-if guest_mood == "happy" {
-    happy_guests += 1;
-} else if guest_mood == "angry" {
-    happy_guests -= 1;
-}
-happy_guests = clamp(happy_guests, 0, max_guests); // Ensure it stays within bounds
