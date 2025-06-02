@@ -1,13 +1,15 @@
-// obj_controller: Create Event
+// obj_controller Create Event
 
-if (!variable_global_exists("health")) {
-    global.health = 0;      // Starting at 0
-    global.max_health = 6;  // Six happy guests make a full health bar
-}
+// Create a global queue for guests.
+global.guestQueue = ds_list_create();
 
+// Coordinates for the check-in desk.
+global.checkinX = 400;  // For example, the desk’s X-coordinate.
+global.checkinY = 300;  // The desk’s Y-coordinate.
 
-
-
-
-
-
+// Define the waiting line position.
+// In this design, the first guest will be at (checkinX, checkinY),
+// and subsequent guests will appear to the left.
+global.waitingLineX = global.checkinX;
+global.waitingLineY = global.checkinY;
+global.lineSpacing  = 40;  // Horizontal spacing between guests.

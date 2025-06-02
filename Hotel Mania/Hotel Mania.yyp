@@ -10,6 +10,7 @@
     {"id":{"name":"spr_player2","path":"sprites/spr_player2/spr_player2.yy",},"order":13,},
     {"id":{"name":"spr_checkout","path":"sprites/spr_checkout/spr_checkout.yy",},"order":5,},
     {"id":{"name":"spr_bullet","path":"sprites/spr_bullet/spr_bullet.yy",},"order":2,},
+    {"id":{"name":"obj_waitingarea","path":"objects/obj_waitingarea/obj_waitingarea.yy",},"order":17,},
     {"id":{"name":"spr_review_board","path":"sprites/spr_review_board/spr_review_board.yy",},"order":6,},
     {"id":{"name":"obj_guest1","path":"objects/obj_guest1/obj_guest1.yy",},"order":4,},
     {"id":{"name":"obj_elevator","path":"objects/obj_elevator/obj_elevator.yy",},"order":11,},

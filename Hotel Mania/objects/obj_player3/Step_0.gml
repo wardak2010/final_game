@@ -1,15 +1,25 @@
-// obj_receptionist - Step Event
-
-// Look for the nearest waiting guest (using the correct object name)
-var guest = instance_nearest(x, y, obj_guest2);
-
-// When the receptionist presses C, check in the guest.
 if (keyboard_check_pressed(ord("C"))) {
-    if (guest != noone && guest.checkedIn == false) {
-        guest.checkedIn = true;
-        guest.state = "checkedin";  // Change their state
-        show_debug_message("Guest " + string(guest.id) + " has been checked in!");
+    show_debug_message("C key pressed: processing check-in");
+    if (ds_list_size(global.guestQueue) > 0) {
+        // Retrieve the guest at the front of the line.
+        var guest = global.guestQueue[| 0];
         
-      
+        // Change the guest's state to check them in.
+        with (guest) {
+            state = "checked_in";
+            show_debug_message("Guest has been checked in.");
+        }
+        
+        // Remove the guest from the queue.
+        ds_list_delete(global.guestQueue, 0);
+        
+        // Re-arrange remaining guests in the line.
+        for (var i = 0; i < ds_list_size(global.guestQueue); i++) {
+            var queuedGuest = global.guestQueue[| i];
+            queuedGuest.x = global.waitingLineX - i * global.lineSpacing;
+            queuedGuest.y = global.waitingLineY;
+        }
+    } else {
+        show_debug_message("No guests waiting to be checked in.");
     }
 }
