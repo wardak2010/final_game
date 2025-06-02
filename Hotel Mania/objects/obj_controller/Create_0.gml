@@ -1,15 +1,11 @@
-// obj_controller Create Event
+// Create the guest queue if it doesn't exist.
+if (!variable_global_exists("guestQueue")) {
+    global.guestQueue = ds_list_create();
+}
 
-// Create a global queue for guests.
-global.guestQueue = ds_list_create();
+// Set waiting area coordinates behind the checkout desk.
+global.waitingLineX = 500;   // Modify to match your checkout desk position.
+global.waitingLineY = 400;   // Fixed vertical coordinate.
 
-// Coordinates for the check-in desk.
-global.checkinX = 400;  // For example, the desk’s X-coordinate.
-global.checkinY = 300;  // The desk’s Y-coordinate.
-
-// Define the waiting line position.
-// In this design, the first guest will be at (checkinX, checkinY),
-// and subsequent guests will appear to the left.
-global.waitingLineX = global.checkinX;
-global.waitingLineY = global.checkinY;
-global.lineSpacing  = 40;  // Horizontal spacing between guests.
+// Set spacing between guests. Increase this value if they overlap.
+global.lineSpacing = 75;

@@ -1,36 +1,46 @@
-// STATE: WALKING – the guest moves toward the check‑in desk.
+// STATE: WALKING – Guest moves horizontally toward the waiting line.
 if (state == "walking") {
-    // Move toward the target position.
-    move_towards_point(target_x, target_y, move_speed);
+    // Keep y fixed.
+    y = global.waitingLineY;
     
-    // When close enough, join the waiting line (if not already queued).
-    if (distance_to_point(target_x, target_y) < 5 && !queued) {
+    // Move horizontally toward the target.
+    if (x < target_x) {
+        x += move_speed;
+        if (x > target_x) x = target_x;
+    } else if (x > target_x) {
+        x -= move_speed;
+        if (x < target_x) x = target_x;
+    }
+    
+    // When near the target and not already queued, join the queue.
+    if (abs(x - target_x) < 5 && !queued) {
         ds_list_add(global.guestQueue, id);
         queued = true;
         state = "waiting";
         
-        // Immediately snap into position based on the index.
-        var index = ds_list_find_index(global.guestQueue, id);
-        x = global.waitingLineX - index * global.lineSpacing;
+        // Assign queue_index as the current last index.
+        queue_index = ds_list_size(global.guestQueue) - 1;
+        
+        // Position the guest in line.
+        x = global.waitingLineX - queue_index * global.lineSpacing;
         y = global.waitingLineY;
-        show_debug_message("Guest joined the line at index " + string(index));
+        show_debug_message("Guest " + string(id) + " joined queue at index " + string(queue_index));
     }
 }
 
-// STATE: WAITING – guest stays in the line.
-if (state == "waiting") {
-    var index = ds_list_find_index(global.guestQueue, id);
-    if (index != -1) {
-        // Arrange horizontally: later index means further left.
-        x = global.waitingLineX - index * global.lineSpacing;
-        y = global.waitingLineY;
-    }
+// STATE: WAITING – Guest stays in the line based on its queue_index.
+else if (state == "waiting") {
+    // Use the stored queue_index to determine its position.
+    x = global.waitingLineX - queue_index * global.lineSpacing;
+    y = global.waitingLineY;
+    // Optionally you can output debug info:
+    // show_debug_message("Guest " + string(id) + " waiting at index " + string(queue_index));
 }
 
-// STATE: CHECKED_IN – guest leaves the waiting line.
-if (state == "checked_in") {
-    // Move the guest to the left until it goes off-screen.
-    x -= 4;  // Speed can be adjusted.
+// STATE: CHECKED_IN – Guest leaves the waiting area horizontally.
+else if (state == "checked_in") {
+    x -= 4;  // Adjust the speed as desired.
+    y = global.waitingLineY; // Keep the same vertical level.
     if (x < -sprite_width) {
         instance_destroy();
     }
