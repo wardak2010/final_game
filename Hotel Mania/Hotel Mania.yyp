@@ -45,7 +45,6 @@
     {"id":{"name":"obj_player3","path":"objects/obj_player3/obj_player3.yy",},"order":15,},
     {"id":{"name":"obj_gamedata","path":"objects/obj_gamedata/obj_gamedata.yy",},"order":7,},
     {"id":{"name":"obj_healthbar","path":"objects/obj_healthbar/obj_healthbar.yy",},"order":10,},
-    {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},"order":0,},
     {"id":{"name":"spr_mood_happy","path":"sprites/spr_mood_happy/spr_mood_happy.yy",},"order":7,},
     {"id":{"name":"obj_receptiondesk","path":"objects/obj_receptiondesk/obj_receptiondesk.yy",},"order":13,},
     {"id":{"name":"spr_test_destroy","path":"sprites/spr_test_destroy/spr_test_destroy.yy",},"order":11,},
@@ -72,8 +71,8 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
+    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
     {"roomId":{"name":"Room4","path":"rooms/Room4/Room4.yy",},},
     {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
