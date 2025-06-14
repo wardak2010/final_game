@@ -48,6 +48,7 @@
     {"id":{"name":"obj_healthbar","path":"objects/obj_healthbar/obj_healthbar.yy",},"order":10,},
     {"id":{"name":"spr_mood_happy","path":"sprites/spr_mood_happy/spr_mood_happy.yy",},"order":6,},
     {"id":{"name":"obj_receptiondesk","path":"objects/obj_receptiondesk/obj_receptiondesk.yy",},"order":13,},
+    {"id":{"name":"spr_player_left","path":"sprites/spr_player_left/spr_player_left.yy",},"order":20,},
     {"id":{"name":"spr_test_destroy","path":"sprites/spr_test_destroy/spr_test_destroy.yy",},"order":10,},
     {"id":{"name":"obj_review_board","path":"objects/obj_review_board/obj_review_board.yy",},"order":6,},
     {"id":{"name":"spr_player3","path":"sprites/spr_player3/spr_player3.yy",},"order":13,},
