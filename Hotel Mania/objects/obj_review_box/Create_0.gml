@@ -4,4 +4,3 @@ displayTime = 3 * room_speed;  // For example, make the review box last 3 second
 depth = -150;       // Ensures it remains above your other boxes
 
 
-

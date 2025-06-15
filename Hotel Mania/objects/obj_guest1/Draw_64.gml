@@ -39,3 +39,4 @@ draw_text(box_x + 5, box_y + 10, moodLabel);
 draw_set_font(fnt_default);
 draw_sprite(moodSprite, 0, box_x + 5 + moodLabelWidth, box_y + 3);
 draw_text(box_x + 5, box_y + 25, satisfaction_text);
+draw_self();

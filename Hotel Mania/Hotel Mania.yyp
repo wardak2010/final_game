@@ -10,6 +10,7 @@
     {"id":{"name":"spr_player2","path":"sprites/spr_player2/spr_player2.yy",},"order":12,},
     {"id":{"name":"TileSet3","path":"tilesets/TileSet3/TileSet3.yy",},"order":2,},
     {"id":{"name":"spr_checkout","path":"sprites/spr_checkout/spr_checkout.yy",},"order":4,},
+    {"id":{"name":"obj_viewController","path":"objects/obj_viewController/obj_viewController.yy",},"order":19,},
     {"id":{"name":"spr_bullet","path":"sprites/spr_bullet/spr_bullet.yy",},"order":1,},
     {"id":{"name":"obj_waitingarea","path":"objects/obj_waitingarea/obj_waitingarea.yy",},"order":16,},
     {"id":{"name":"spr_review_board","path":"sprites/spr_review_board/spr_review_board.yy",},"order":5,},
@@ -73,11 +74,11 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
-    {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
-    {"roomId":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
     {"roomId":{"name":"Room4","path":"rooms/Room4/Room4.yy",},},
+    {"roomId":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
+    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
+    {"roomId":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
   ],
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Animation Curves","folderPath":"folders/Animation Curves.yy","order":10,},
