@@ -26,4 +26,9 @@ if (alarm[1] != -1) {
 }
 
 
+// --- Step Event for obj_guest1 ---
+// If the guest leaves the right side of the room, destroy it.
+if (x > room_width + sprite_get_width(sprite_index)) {
+    instance_destroy();
+}
 

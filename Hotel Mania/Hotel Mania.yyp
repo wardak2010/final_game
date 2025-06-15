@@ -26,6 +26,7 @@
     {"id":{"name":"obj_background","path":"objects/obj_background/obj_background.yy",},"order":17,},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},"order":18,},
     {"id":{"name":"spr_wall","path":"sprites/spr_wall/spr_wall.yy",},"order":18,},
+    {"id":{"name":"Elevator_Music__Kevin_MacLeod____Background_Music__HD_","path":"sounds/Elevator_Music__Kevin_MacLeod____Background_Music__HD_/Elevator_Music__Kevin_MacLeod____Background_Music__HD_.yy",},"order":1,},
     {"id":{"name":"obj_player2","path":"objects/obj_player2/obj_player2.yy",},"order":12,},
     {"id":{"name":"spr_tileset1","path":"sprites/spr_tileset1/spr_tileset1.yy",},"order":14,},
     {"id":{"name":"spr_tileset3","path":"sprites/spr_tileset3/spr_tileset3.yy",},"order":17,},
@@ -74,11 +75,11 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"Room4","path":"rooms/Room4/Room4.yy",},},
     {"roomId":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
     {"roomId":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
+    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"Room4","path":"rooms/Room4/Room4.yy",},},
   ],
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Animation Curves","folderPath":"folders/Animation Curves.yy","order":10,},
