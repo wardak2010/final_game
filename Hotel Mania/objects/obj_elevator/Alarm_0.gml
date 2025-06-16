@@ -1,2 +1,2 @@
-// Elevator Alarm[0] Event
+// obj_elevator - Alarm[0] Event
 canAttach = true;
