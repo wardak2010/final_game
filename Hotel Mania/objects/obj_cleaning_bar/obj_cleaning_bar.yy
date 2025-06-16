@@ -27,7 +27,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Hotel Mania",
-    "path": "Hotel Mania.yyp",
+    "name": "Objects",
+    "path": "folders/Objects.yy",
   },
 }

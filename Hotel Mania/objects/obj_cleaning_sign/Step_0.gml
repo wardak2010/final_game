@@ -8,7 +8,7 @@ if (y > room_height - 50) {  // Adjust the threshold as needed.
 // Check if the player is overlapping the cleaning sign.
 if (place_meeting(x, y, obj_player)) {
     // If the cleaning key (E) is held:
-    if (keyboard_check(ord("E"))) {
+    if (keyboard_check(ord("C"))) {
         cleaningProgress += 1;
         
         // When the cleaning progress reaches the necessary duration,

@@ -7,8 +7,8 @@ direction = 180;
 /// @DnDAction : YoYo Games.Movement.Set_Speed
 /// @DnDVersion : 1
 /// @DnDHash : 18A22F6E
-/// @DnDArgument : "speed" "4"
-speed = 4;
+/// @DnDArgument : "speed" "6"
+speed = 6;
 
 /// @DnDAction : YoYo Games.Instances.Set_Sprite
 /// @DnDVersion : 1
