@@ -34,6 +34,11 @@ if (!variable_global_exists("cleanedRooms")) {
 global.cleaningTarget = 8;         // Total cleaning signs to clean for the goal.
 
 
+// Initialize the list of active cleaning signs
+global.cleaning_sign_positions = ds_list_create();
+
+// Set the spawn timer (adjust as needed)
+alarm[0] = 600; // 600 steps = 10 seconds
 
 
 

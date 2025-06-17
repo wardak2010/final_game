@@ -7,8 +7,8 @@ enemy_health = 4; // Initialize health in Create Event
 /// @DnDAction : YoYo Games.Movement.Set_Direction_Random
 /// @DnDVersion : 1.1
 /// @DnDHash : 33AD085A
-/// @DnDArgument : "direction" "135,90,45,180,0,225,270,315"
-direction = choose(135,90,45,180,0,225,270,315);
+/// @DnDArgument : "direction" "0"
+direction = choose(0);
 
 /// @DnDAction : YoYo Games.Movement.Set_Speed
 /// @DnDVersion : 1

@@ -13,6 +13,7 @@ cleaningProgress = 0;
 
 // A flag to ensure this cleaning sign only increments the counter once.
 cleaned = false;
+global.cleaningTarget = 8; // Adjust this based on your game design
 
 
 

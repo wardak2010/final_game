@@ -19,53 +19,102 @@ if (myMap[?"event_type"] == "spawn") {
     show_debug_message("The event type is spawn.");
 }
 
+
+
 // --- Step Event in obj_guest1 (Optional for debugging) ---
 // This will log the current alarm[1] value each step.
 if (alarm[1] != -1) {
     show_debug_message("Guest " + string(id) + " alarm[1] value: " + string(alarm[1]));
 }
 
-
-// --- Step Event for obj_guest1 ---
-// If the guest leaves the right side of the room, destroy it.
-if (x > room_width + sprite_get_width(sprite_index)) {
-    instance_destroy();
+//checkin mechanic
+// STATE: WALKING – Guest moves horizontally toward the waiting line.
+if (state == "walking") {
+    // Keep y fixed.
+    y = global.waitingLineY;
+    
+    // Move horizontally toward the target.
+    if (x < target_x) {
+        x += move_speed;
+        if (x > target_x) x = target_x;
+    } else if (x > target_x) {
+        x -= move_speed;
+        if (x < target_x) x = target_x;
+    }
+    
+    // When near the target and not already queued, join the queue.
+    if (abs(x - target_x) < 5 && !queued) {
+        ds_list_add(global.guestQueue, id);
+        queued = true;
+        state = "waiting";
+        
+        // Assign queue_index as the current last index.
+        queue_index = ds_list_size(global.guestQueue) - 1;
+        
+        // Position the guest in line.
+        x = global.waitingLineX - queue_index * global.lineSpacing;
+        y = global.waitingLineY;
+        show_debug_message("Guest " + string(id) + " joined queue at index " + string(queue_index));
+    }
 }
 
-//for checkin mechanic
-// obj_guest Step Event
+// STATE: WAITING – Guest stays in the line based on its queue_index.
+else if (state == "waiting") {
+    // Use the stored queue_index to determine its position.
+    x = global.waitingLineX - queue_index * global.lineSpacing;
+    y = global.waitingLineY;
+    // Optionally you can output debug info:
+    // show_debug_message("Guest " + string(id) + " waiting at index " + string(queue_index));
+}
 
-// Get reference to the desk
-var desk = instance_find(obj_checkinDesk, 0);
-if (desk == noone) exit;
+// STATE: CHECKED_IN – Guest leaves the waiting area horizontally.
+else if (state == "checked_in") {
+    x -= 4;  // Adjust the speed as desired.
+    y = global.waitingLineY; // Keep the same vertical level.
+    if (x < -sprite_width) {
+        instance_destroy();
+    }
+}
 
-switch (state) {
-    case "entering":
-        x += speed_walk;
+/// obj_guest - Step Event
 
-        if (x >= desk.x - checkOffset && !queued) {
-            queued = true;
+// Ensure global variables are set (optional redundancy)
+/// obj_guest - Step Event
 
-            ds_list_add(global.guestQueue, id);
-            queue_index = ds_list_size(global.guestQueue) - 1;
+// Ensure global waiting area variables exist.
+/// obj_guest - Step Event
 
-            target_x = global.waitingLineX - queue_index * global.lineSpacing;
-            state = "waiting";
-        }
-        break;
+// Make sure our global waiting area variables exist.
+if (!variable_global_exists("waitingLineX")) { global.waitingLineX = 500; }
+if (!variable_global_exists("waitingLineY")) { global.waitingLineY = 400; }
+if (!variable_global_exists("lineSpacing")) { global.lineSpacing = 50; }
 
-    case "waiting":
-        if (abs(x - target_x) > 1) {
-            x += sign(target_x - x) * speed_walk;
-        } else {
-            x = target_x;
-        }
-        break;
+// Define our constant speed.
+var const_speed = 3;
 
-    case "checked_in":
-        x += speed_walk * 2;
-        if (x > room_width + sprite_width) {
-            instance_destroy();
-        }
-        break;
+// Behavior based on the guest's state.
+if (state == "walking") {
+    // Move toward the waiting line position.
+    var d = point_distance(x, y, target_x, target_y);
+    if (d > const_speed) {
+        var dir = point_direction(x, y, target_x, target_y);
+        x += lengthdir_x(const_speed, dir);
+        y += lengthdir_y(const_speed, dir);
+    } else {
+        // Snap into the waiting area and change state.
+        x = target_x;
+        y = target_y;
+        state = "waiting";
+    }
+}
+else if (state == "waiting") {
+    // In waiting state, the guest's position is determined by your queue repositioning code.
+    // Ensure that your repositioning code only affects guests where state == "waiting".
+    x = target_x;
+    y = target_y;
+}
+else if (state == "checked_in") {
+    // When checked in, simply increment x by const_speed to move right.
+    // No repositioning should occur here.
+    x += const_speed;
 }

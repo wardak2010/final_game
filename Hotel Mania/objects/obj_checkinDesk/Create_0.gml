@@ -1,1 +1,0 @@
-checkOffset = 64;

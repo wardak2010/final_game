@@ -9,3 +9,8 @@ attachOffsetY = 0;         // Vertical offset from the elevator's position.
 checkedIn = false;  // Indicates if they've been checked in
 state = "waiting";  // Can change to "checkedin" once they are processed
 
+//gunmechanic
+// In obj_player - Create Event
+gun = instance_create_layer(x, y, "Instances", obj_gun);
+
+global.activeCleaningSign = noone;

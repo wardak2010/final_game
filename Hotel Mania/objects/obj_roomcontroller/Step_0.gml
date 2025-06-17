@@ -19,3 +19,5 @@ if (global.cleanedRooms >= global.cleaningTarget) {
     // Optionally, you can output a debug message confirming the removal.
     show_debug_message("Cleaning target reached (" + string(global.cleanedRooms) + "). All cleaning signs removed.");
 }
+
+

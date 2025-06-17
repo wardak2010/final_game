@@ -10,9 +10,9 @@ if (guest_count < max_guests) {
 
         // Ensure only one guest spawns at the start
         if (guest_count == 1) {
-            alarm[0] = 15 * room_speed; // After first spawn, guests come every 15 seconds
+            alarm[0] = 10 * room_speed; // After first spawn, guests come every 15 seconds
         } else {
-            alarm[0] = 15 * room_speed; // Normal spawn rate
+            alarm[0] = 10 * room_speed; // Normal spawn rate
         }
     }
 }
