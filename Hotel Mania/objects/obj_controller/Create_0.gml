@@ -15,3 +15,4 @@ global.cleanedRooms   = 0;      // Number of signs cleaned so far
 global.cleaningTarget = 8;      // The target count to transition rooms
 global.transitioning  = false;  // Flag to ensure a room transition happens only once
 global.guestQueue = ds_list_create();
+global.forceRestart = false;

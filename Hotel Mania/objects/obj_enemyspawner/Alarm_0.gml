@@ -12,6 +12,6 @@ if (global.enemy_count < global.max_enemies) {
     // Cycle through spawn points
     global.spawn_index = (global.spawn_index + 1) mod array_length(global.spawn_points);
 
-    // Set alarm to spawn another enemy in 5 seconds
-    alarm[0] = 600;
+    // Set alarm to spawn another enemy in 20 seconds
+    alarm[0] = 1200;
 }

@@ -68,7 +68,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Hotel Mania",
-    "path": "Hotel Mania.yyp",
+    "name": "Sprites",
+    "path": "folders/Sprites.yy",
   },
 }

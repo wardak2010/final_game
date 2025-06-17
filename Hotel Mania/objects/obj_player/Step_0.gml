@@ -88,38 +88,49 @@ if (mouse_check_button_pressed(mb_left) && instance_exists(gun)) {
 }
 
 //cleaningmechanic
-// Find the nearest cleaning sign if none is currently tracked
+// Player Step Event
+
+// Ensure that global.activeCleaningSign is initialized somewhere (e.g., in a Create event)
+// global.activeCleaningSign = noone;
+
+// If no active sign is being tracked, and the player is overlapping a cleaning sign, assign it.
 if (global.activeCleaningSign == noone) {
-    global.activeCleaningSign = instance_nearest(x, y, obj_cleaning_sign);
-}
-
-// Ensure the tracked sign still exists before modifying it
-if (instance_exists(global.activeCleaningSign)) {
-    if (keyboard_check(ord("D"))) {
-        // Increase cleaning progress only for the tracked sign
-        global.activeCleaningSign.cleaningProgress += 1;
-
-        // Play the cleaning sound smoothly (no overlaps)
-        if (!audio_is_playing(Cartoon_Squeaky_Sound_Effect)) {
-            audio_play_sound(Cartoon_Squeaky_Sound_Effect, 1, false);
-        }
-
-        // Once cleaning is complete, ensure only this sign disappears
-        if (global.activeCleaningSign.cleaningProgress >= global.activeCleaningSign.cleaningDuration && !global.activeCleaningSign.cleaned) {
-            global.activeCleaningSign.cleaned = true;
-            global.cleanedRooms = min(global.cleanedRooms + 1, global.cleaningTarget);
-
-            show_debug_message("Cleaning complete for one sign. Total cleaned: " + string(global.cleanedRooms));
-
-            instance_destroy(global.activeCleaningSign); // Destroy only the tracked sign
-            global.activeCleaningSign = noone; // Reset tracking
-        }
-    } else {
-        global.activeCleaningSign.cleaningProgress = 0; // Reset progress if key is released
+    if (place_meeting(x, y, obj_cleaning_sign)) {
+        global.activeCleaningSign = instance_nearest(x, y, obj_cleaning_sign);
     }
 }
 
-// Reset tracking if the player moves away from the sign or if it no longer exists
-if (global.activeCleaningSign != noone && (!place_meeting(x, y, global.activeCleaningSign) || !instance_exists(global.activeCleaningSign))) {
-    global.activeCleaningSign = noone;
+// Process cleaning if an active sign is currently tracked and exists.
+if (global.activeCleaningSign != noone && instance_exists(global.activeCleaningSign)) {
+    // Check if the player is still overlapping the tracked cleaning sign.
+    if (place_meeting(x, y, global.activeCleaningSign)) {
+        // Increase cleaning progress only while the key is pressed.
+        if (keyboard_check(ord("D"))) {
+            global.activeCleaningSign.cleaningProgress += 1;
+            
+            // Play the cleaning sound, ensuring no overlapping sound plays.
+            if (!audio_is_playing(Cartoon_Squeaky_Sound_Effect)) {
+                audio_play_sound(Cartoon_Squeaky_Sound_Effect, 1, false);
+            }
+            
+            // When cleaning progress reaches or exceeds the duration and hasn't been counted:
+            if (global.activeCleaningSign.cleaningProgress >= global.activeCleaningSign.cleaningDuration && !global.activeCleaningSign.cleaned) {
+                global.activeCleaningSign.cleaned = true;
+                global.cleanedRooms = min(global.cleanedRooms + 1, global.cleaningTarget);
+                show_debug_message("Cleaning complete for one sign. Total cleaned: " + string(global.cleanedRooms));
+                
+                // Destroy the completed cleaning sign and reset the tracked sign.
+                instance_destroy(global.activeCleaningSign);
+                global.activeCleaningSign = noone;
+            }
+        } else {
+            // Reset the cleaning progress if the D key is not held.
+            global.activeCleaningSign.cleaningProgress = 0;
+        }
+    }
+    else {
+        // Player is no longer overlapping the active sign; reset the tracking.
+        global.activeCleaningSign = noone;
+    }
 }
+

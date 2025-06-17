@@ -1,6 +1,6 @@
 // Initialize enemy count
 global.enemy_count = 0;
-global.max_enemies = 12;
+global.max_enemies = 10;
 global.spawn_index = 0;
 
 // Define specific spawn positions (adjust as needed)
