@@ -32,21 +32,40 @@ if (x > room_width + sprite_get_width(sprite_index)) {
     instance_destroy();
 }
 
-//checkin mechanic
-// obj_guest - Step Event
+//for checkin mechanic
+// obj_guest Step Event
 
-// When checked in, the guest will move to the right toward targetX.
-if (checkedIn) {
-    // If the guest hasn't reached its target, move right.
-    if (x < targetX) {
-        x += moveSpeed;
-        // Optionally, if you want smooth movement you can use:
-        // x = lerp(x, targetX, 0.1);
-    }
-    
-    // (If the guest overshoots or reaches the target, you can freeze it or trigger some other event.)
-    if (x >= targetX) {
-        x = targetX;
-        // You might change the state further (e.g., set checkedIn = false or set a new state).
-    }
+// Get reference to the desk
+var desk = instance_find(obj_checkinDesk, 0);
+if (desk == noone) exit;
+
+switch (state) {
+    case "entering":
+        x += speed_walk;
+
+        if (x >= desk.x - checkOffset && !queued) {
+            queued = true;
+
+            ds_list_add(global.guestQueue, id);
+            queue_index = ds_list_size(global.guestQueue) - 1;
+
+            target_x = global.waitingLineX - queue_index * global.lineSpacing;
+            state = "waiting";
+        }
+        break;
+
+    case "waiting":
+        if (abs(x - target_x) > 1) {
+            x += sign(target_x - x) * speed_walk;
+        } else {
+            x = target_x;
+        }
+        break;
+
+    case "checked_in":
+        x += speed_walk * 2;
+        if (x > room_width + sprite_width) {
+            instance_destroy();
+        }
+        break;
 }

@@ -1,7 +1,7 @@
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
 /// @DnDHash : 640AEB37
-/// @DnDArgument : "code" "// Create Event for obj_guest1$(13_10)$(13_10)// Always create the personality map. (No conditional check needed.)$(13_10)personality = ds_map_create();$(13_10)personality[?"mood"]         = "Happy";$(13_10)personality[?"satisfaction"] = 100;$(13_10)$(13_10)// Create myMap if you use it.$(13_10)myMap = ds_map_create();$(13_10)myMap[?"event_type"] = "none";$(13_10)// --- Create Event in obj_guest1 ---$(13_10)$(13_10)$(13_10)// Add data to the ds_map; here we use "Happy" as an example.$(13_10)// Options might be "Happy", "Neutral", or any other value.$(13_10)ds_map_add(personality, "mood", "Happy");$(13_10)$(13_10)$(13_10)// --- Create Event in obj_guest1 ---$(13_10)// Optional: Initialize the personality ds_map, if not already set.$(13_10)if (!variable_instance_exists(id, "personality"))$(13_10){$(13_10)    personality = ds_map_create();$(13_10)    ds_map_add(personality, "mood", "Happy");  // Change "Happy" to what you need.$(13_10)}$(13_10)$(13_10)// --- Create Event in obj_guest1 ---$(13_10)$(13_10)// Ensure the game runs at 60 FPS.$(13_10)game_set_speed(60, gamespeed_fps);$(13_10)show_debug_message("Game speed set to 60 FPS; room_speed is: " + string(room_speed));$(13_10)$(13_10)// Initialize the personality ds_map if it doesn't exist.$(13_10)if (!variable_instance_exists(id, "personality")) {$(13_10)    personality = ds_map_create();$(13_10)    ds_map_add(personality, "mood", "Happy");  // Set this as needed.$(13_10)    show_debug_message("Personality ds_map created with mood 'Happy'.");$(13_10)}$(13_10)$(13_10)// Create a flag to ensure we only schedule the destruction once.$(13_10)destroyScheduled = false;$(13_10)guest_mood = "neutral"; // Default value to prevent errors$(13_10)max_guests = 7; // Set the maximum number of happy guests needed$(13_10)persistent = true;$(13_10)$(13_10)//for checkin mechanics$(13_10)// obj_guest - Create Event$(13_10)$(13_10)// Initially, guests are waiting (line-up state).$(13_10)waiting = true;      // Boolean: true = waiting, false = no longer waiting.$(13_10)checkedIn = false;   // Boolean: becomes true when the guest has been "checked in."$(13_10)targetX = x;         // For movement when checked in (will be set on check-in).$(13_10)moveSpeed = 2;       // Horizontal movement speed (adjust as needed).$(13_10)$(13_10)$(13_10)"
+/// @DnDArgument : "code" "// Create Event for obj_guest1$(13_10)$(13_10)// Always create the personality map. (No conditional check needed.)$(13_10)personality = ds_map_create();$(13_10)personality[?"mood"]         = "Happy";$(13_10)personality[?"satisfaction"] = 100;$(13_10)$(13_10)// Create myMap if you use it.$(13_10)myMap = ds_map_create();$(13_10)myMap[?"event_type"] = "none";$(13_10)// --- Create Event in obj_guest1 ---$(13_10)$(13_10)$(13_10)// Add data to the ds_map; here we use "Happy" as an example.$(13_10)// Options might be "Happy", "Neutral", or any other value.$(13_10)ds_map_add(personality, "mood", "Happy");$(13_10)$(13_10)$(13_10)// --- Create Event in obj_guest1 ---$(13_10)// Optional: Initialize the personality ds_map, if not already set.$(13_10)if (!variable_instance_exists(id, "personality"))$(13_10){$(13_10)    personality = ds_map_create();$(13_10)    ds_map_add(personality, "mood", "Happy");  // Change "Happy" to what you need.$(13_10)}$(13_10)$(13_10)// --- Create Event in obj_guest1 ---$(13_10)$(13_10)// Ensure the game runs at 60 FPS.$(13_10)game_set_speed(60, gamespeed_fps);$(13_10)show_debug_message("Game speed set to 60 FPS; room_speed is: " + string(room_speed));$(13_10)$(13_10)// Initialize the personality ds_map if it doesn't exist.$(13_10)if (!variable_instance_exists(id, "personality")) {$(13_10)    personality = ds_map_create();$(13_10)    ds_map_add(personality, "mood", "Happy");  // Set this as needed.$(13_10)    show_debug_message("Personality ds_map created with mood 'Happy'.");$(13_10)}$(13_10)$(13_10)// Create a flag to ensure we only schedule the destruction once.$(13_10)destroyScheduled = false;$(13_10)guest_mood = "neutral"; // Default value to prevent errors$(13_10)max_guests = 7; // Set the maximum number of happy guests needed$(13_10)persistent = true;$(13_10)$(13_10)//for checkin mechanic$(13_10)speed_walk = 1.2;$(13_10)state = "entering";$(13_10)checkOffset = 24;$(13_10)queued = false;$(13_10)queue_index = -1;$(13_10)target_x = x;$(13_10)"
 // Create Event for obj_guest1
 
 // Always create the personality map. (No conditional check needed.)
@@ -47,11 +47,22 @@ guest_mood = "neutral"; // Default value to prevent errors
 max_guests = 7; // Set the maximum number of happy guests needed
 persistent = true;
 
-//for checkin mechanics
-// obj_guest - Create Event
+//for checkin mechanic
+speed_walk = 1.2;
+state = "entering";
+checkOffset = 24;
+queued = false;
+queue_index = -1;
+target_x = x;
 
-// Initially, guests are waiting (line-up state).
-waiting = true;      // Boolean: true = waiting, false = no longer waiting.
-checkedIn = false;   // Boolean: becomes true when the guest has been "checked in."
-targetX = x;         // For movement when checked in (will be set on check-in).
-moveSpeed = 2;       // Horizontal movement speed (adjust as needed).
+/// @DnDAction : YoYo Games.Movement.Set_Direction_Random
+/// @DnDVersion : 1.1
+/// @DnDHash : 401A68E4
+/// @DnDArgument : "direction" "180,0"
+direction = choose(180,0);
+
+/// @DnDAction : YoYo Games.Movement.Set_Speed
+/// @DnDVersion : 1
+/// @DnDHash : 0D9195B1
+/// @DnDArgument : "speed" "3"
+speed = 3;
