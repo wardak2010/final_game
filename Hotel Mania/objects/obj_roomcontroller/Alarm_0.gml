@@ -1,3 +1,4 @@
+/*
 var spawn_x = irandom_range(100, room_width - 100);
 var spawn_y = irandom_range(100, room_height - 100);
 
@@ -27,7 +28,7 @@ else {
     // Try again sooner if the position was occupied
     alarm[0] = 60; // Try again in 1 second
 }
-
+*/
 
 
 

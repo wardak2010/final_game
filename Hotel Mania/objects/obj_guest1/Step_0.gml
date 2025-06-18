@@ -69,12 +69,13 @@ else if (state == "waiting") {
 
 // STATE: CHECKED_IN – Guest leaves the waiting area horizontally.
 else if (state == "checked_in") {
-    x -= 4;  // Adjust the speed as desired.
-    y = global.waitingLineY; // Keep the same vertical level.
-    if (x < -sprite_width) {
+    x += 4;  // Now moves to the right.
+    y = global.waitingLineY;
+    if (x > room_width + sprite_width) {  // Adjust the boundary check accordingly.
         instance_destroy();
     }
 }
+
 
 /// obj_guest - Step Event
 
