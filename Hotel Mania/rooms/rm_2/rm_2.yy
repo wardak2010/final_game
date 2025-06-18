@@ -74,6 +74,7 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_3B7688A2","properties":[],"isDnd":false,"objectId":{"name":"Object32","path":"objects/Object32/Object32.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":4.5,"scaleY":4.0625,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1272.0,"y":2044.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_63DD52A7","properties":[],"isDnd":false,"objectId":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":2144.0,"y":2624.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_14E8CD38","properties":[],"isDnd":false,"objectId":{"name":"obj_roomcontroller","path":"objects/obj_roomcontroller/obj_roomcontroller.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":320.0,"y":1696.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_3916B3C2","properties":[],"isDnd":false,"objectId":{"name":"obj_roomcontroller","path":"objects/obj_roomcontroller/obj_roomcontroller.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":192.0,"y":2400.0,},
       ],"visible":true,"depth":500,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritVisibility":true,"inheritSubLayers":true,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"greybg","instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_5A266EA5","properties":[],"isDnd":false,"objectId":{"name":"obj_greybg","path":"objects/obj_greybg/obj_greybg.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":2.765625,"scaleY":17.640625,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1120.0,"y":1088.0,},
@@ -223,6 +224,7 @@
     {"name":"inst_3B7688A2","path":"rooms/rm_2/rm_2.yy",},
     {"name":"inst_63DD52A7","path":"rooms/rm_2/rm_2.yy",},
     {"name":"inst_14E8CD38","path":"rooms/rm_2/rm_2.yy",},
+    {"name":"inst_3916B3C2","path":"rooms/rm_2/rm_2.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,
